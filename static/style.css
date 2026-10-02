@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f5f8;
+    color: #17202a;
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+
+/* Header */
+
+header {
+    background: #ffffff;
+    padding: 22px 18px 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+header p {
+    margin: 6px 0 0;
+    color: #7b8794;
+}
+
+
+/* Section */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.refresh-btn {
+    border: none;
+    background: #ffffff;
+    font-size: 25px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+/* Medicine boxes */
+
+.medicine-box {
+    background: white;
+    margin: 0 15px 14px;
+    padding: 17px;
+    border-radius: 17px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-number {
+    font-size: 15px;
+    color: #7b8794;
+}
+
+.box-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.active {
+    background: #dff7e8;
+    color: #16803c;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.inactive {
+    background: #edf0f2;
+    color: #7b8794;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.times {
+    margin-top: 13px;
+}
+
+.time-item {
+    display: inline-block;
+    background: #eef5ff;
+    padding: 7px 11px;
+    border-radius: 10px;
+    margin: 3px;
+    font-size: 14px;
+}
+
+.edit-btn {
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    background: #198754;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* Edit page */
+
+.hidden {
+    display: none !important;
+}
+
+.back-btn {
+    margin: 15px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-header {
+    padding: 0 18px 10px;
+}
+
+.edit-header h2 {
+    margin: 0;
+}
+
+.edit-header p {
+    color: #7b8794;
+}
+
+
+.card {
+    background: white;
+    margin: 10px 15px;
+    padding: 17px;
+    border-radius: 17px;
+}
+
+.card label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.card input[type="text"] {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d7dce1;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.card input:focus {
+    border-color: #198754;
+}
+
+
+/* Reminder times */
+
+.times-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.times-header h3 {
+    margin: 0;
+}
+
+.times-header p {
+    margin: 4px 0 0;
+    color: #7b8794;
+    font-size: 13px;
+}
+
+.add-btn {
+    border: none;
+    background: #198754;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.time-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.time-row input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #d7dce1;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.delete-time {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    background: #ffe5e5;
+    color: #d63031;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* Save */
+
+.save-main-btn {
+    width: calc(100% - 30px);
+    margin: 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 13px;
+    background: #198754;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* Message */
+
+#message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #202124;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 20px;
+    display: none;
+    z-index: 100;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   maximum-scale=1.0, user-scalable=no">
+
+    <title>Smart Medicine Box</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Header -->
+    <header>
+        <div>
+            <h1>💊 Smart Medicine Box</h1>
+            <p id="welcome">Medicine Reminder</p>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <main id="homePage">
+
+        <div class="section-title">
+            <h2>My Medicine Boxes</h2>
+            <button class="refresh-btn" onclick="loadMedicines()">↻</button>
+        </div>
+
+        <div id="boxesContainer"></div>
+
+    </main>
+
+
+    <!-- Edit Page -->
+    <main id="editPage" class="hidden">
+
+        <button class="back-btn" onclick="showHome()">
+            ← Back
+        </button>
+
+        <div class="edit-header">
+            <h2 id="editTitle">Box 1</h2>
+            <p>Medicine information</p>
+        </div>
+
+        <div class="card">
+
+            <label>Medicine name</label>
+
+            <input
+                type="text"
+                id="medicineName"
+                placeholder="Enter medicine name"
+            >
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="times-header">
+                <div>
+                    <h3>Reminder times</h3>
+                    <p>Up to 4 reminders</p>
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addTime()">
+                    + Add
+                </button>
+            </div>
+
+            <div id="timesContainer"></div>
+
+        </div>
+
+
+        <button
+            class="save-main-btn"
+            onclick="saveMedicine()">
+            💾 Save Changes
+        </button>
+
+    </main>
+
+
+    <!-- Status -->
+    <div id="message"></div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
