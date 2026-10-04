@@ -326,6 +326,268 @@ async function saveMedicine() {
 
 }
 
+```javascript
+// -----------------------------
+// Stop all alarms
+// -----------------------------
+
+async function stopAlarm() {
+
+    try {
+
+        const response =
+            await fetch("/api/stop-alarm", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    source: "telegram_web_app"
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if (result.success) {
+
+            showMessage(
+                "🔕 ئاگادارکردنەوە وەستێنرا."
+            );
+
+            if (
+                tg.HapticFeedback &&
+                tg.HapticFeedback.notificationOccurred
+            ) {
+
+                tg.HapticFeedback
+                    .notificationOccurred("success");
+
+            }
+
+        } else {
+
+            showMessage(
+                result.message ||
+                "Could not stop alarm."
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Connection error."
+        );
+
+    }
+
+}
+
+
+// -----------------------------
+// Load saved Kurdish voice text
+// -----------------------------
+
+async function loadVoiceText() {
+
+    try {
+
+        const response =
+            await fetch("/api/voice-text");
+
+        if (!response.ok) {
+
+            return;
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.success &&
+            result.text !== undefined
+        ) {
+
+            document.getElementById("voiceText").value =
+                result.text || "";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Could not load voice text:",
+            error
+        );
+
+    }
+
+}
+
+
+// -----------------------------
+// Save Kurdish voice text
+// -----------------------------
+
+async function saveVoiceText() {
+
+    const text =
+        document.getElementById("voiceText")
+            .value
+            .trim();
+
+
+    if (!text) {
+
+        showMessage(
+            "تکایە دەقی دەنگی کوردی بنووسە."
+        );
+
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch("/api/voice-text", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    text: text
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if (result.success) {
+
+            showMessage(
+                "💾 دەقی دەنگ پاشەکەوت کرا."
+            );
+
+            if (
+                tg.HapticFeedback &&
+                tg.HapticFeedback.notificationOccurred
+            ) {
+
+                tg.HapticFeedback
+                    .notificationOccurred("success");
+
+            }
+
+        } else {
+
+            showMessage(
+                result.message ||
+                "نەتوانرا دەق پاشەکەوت بکرێت."
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "هەڵەی پەیوەندی."
+        );
+
+    }
+
+}
+
+
+// -----------------------------
+// Send saved Kurdish voice
+// -----------------------------
+
+async function sendVoice() {
+
+    try {
+
+        const response =
+            await fetch("/api/send-voice", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    source: "telegram_web_app"
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if (result.success) {
+
+            showMessage(
+                "🔊 دەنگ نێردرا."
+            );
+
+            if (
+                tg.HapticFeedback &&
+                tg.HapticFeedback.notificationOccurred
+            ) {
+
+                tg.HapticFeedback
+                    .notificationOccurred("success");
+
+            }
+
+        } else {
+
+            showMessage(
+                result.message ||
+                "نەتوانرا دەنگ بنێردرێت."
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "هەڵەی پەیوەندی."
+        );
+
+    }
+
+}
+```
+
+
 
 // -----------------------------
 // Return home
@@ -369,3 +631,7 @@ function showMessage(message) {
 // -----------------------------
 
 loadMedicines();
+
+// Load saved Kurdish voice text
+loadVoiceText();
+
