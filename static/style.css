@@ -2,11 +2,16 @@
     box-sizing: border-box;
 }
 
+html {
+    direction: rtl;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Tahoma, sans-serif;
     background: #f2f5f8;
     color: #17202a;
+    direction: rtl;
 }
 
 .app {
@@ -16,7 +21,10 @@ body {
     padding-bottom: 30px;
 }
 
-/* Header */
+
+/* ================================= */
+/* HEADER */
+/* ================================= */
 
 header {
     background: #ffffff;
@@ -27,15 +35,19 @@ header {
 header h1 {
     margin: 0;
     font-size: 22px;
+    text-align: right;
 }
 
 header p {
     margin: 6px 0 0;
     color: #7b8794;
+    text-align: right;
 }
 
 
-/* Section */
+/* ================================= */
+/* SECTION TITLE */
+/* ================================= */
 
 .section-title {
     display: flex;
@@ -60,14 +72,16 @@ header p {
 }
 
 
-/* Medicine boxes */
+/* ================================= */
+/* MEDICINE BOX */
+/* ================================= */
 
 .medicine-box {
     background: white;
     margin: 0 15px 14px;
     padding: 17px;
     border-radius: 17px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .box-top {
@@ -130,7 +144,131 @@ header p {
 }
 
 
-/* Edit page */
+/* ================================= */
+/* CONTROL CARD */
+/* ================================= */
+
+.control-card {
+    background: white;
+    margin: 20px 15px 14px;
+    padding: 18px;
+    border-radius: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.control-card h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.control-card p {
+    margin: 8px 0 15px;
+    color: #7b8794;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.stop-alarm-btn {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    background: #d63031;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.stop-alarm-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ================================= */
+/* KURDISH VOICE CARD */
+/* ================================= */
+
+.voice-card {
+    background: white;
+    margin: 14px 15px;
+    padding: 18px;
+    border-radius: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.voice-card h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.voice-card p {
+    margin: 8px 0 15px;
+    color: #7b8794;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.voice-card label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.voice-card textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    padding: 13px;
+    border: 1px solid #d7dce1;
+    border-radius: 10px;
+    font-family: Arial, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    direction: rtl;
+    text-align: right;
+    outline: none;
+}
+
+.voice-card textarea:focus {
+    border-color: #198754;
+}
+
+.voice-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.save-voice-btn,
+.send-voice-btn {
+    flex: 1;
+    border: none;
+    padding: 12px 8px;
+    border-radius: 11px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-voice-btn {
+    background: #198754;
+}
+
+.send-voice-btn {
+    background: #1976d2;
+}
+
+.save-voice-btn:active,
+.send-voice-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ================================= */
+/* EDIT PAGE */
+/* ================================= */
 
 .hidden {
     display: none !important;
@@ -157,6 +295,10 @@ header p {
 }
 
 
+/* ================================= */
+/* CARDS */
+/* ================================= */
+
 .card {
     background: white;
     margin: 10px 15px;
@@ -176,6 +318,8 @@ header p {
     border: 1px solid #d7dce1;
     border-radius: 10px;
     font-size: 16px;
+    direction: rtl;
+    text-align: right;
     outline: none;
 }
 
@@ -184,7 +328,9 @@ header p {
 }
 
 
-/* Reminder times */
+/* ================================= */
+/* REMINDER TIMES */
+/* ================================= */
 
 .times-header {
     display: flex;
@@ -238,7 +384,9 @@ header p {
 }
 
 
-/* Save */
+/* ================================= */
+/* SAVE MEDICINE */
+/* ================================= */
 
 .save-main-btn {
     width: calc(100% - 30px);
@@ -254,7 +402,9 @@ header p {
 }
 
 
-/* Message */
+/* ================================= */
+/* MESSAGE */
+/* ================================= */
 
 #message {
     position: fixed;
@@ -267,4 +417,32 @@ header p {
     border-radius: 20px;
     display: none;
     z-index: 100;
+    max-width: 90%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media (max-width: 450px) {
+
+    .voice-buttons {
+        flex-direction: column;
+    }
+
+    .save-voice-btn,
+    .send-voice-btn {
+        width: 100%;
+    }
+
+    .section-title h2 {
+        font-size: 18px;
+    }
+
+    .box-name {
+        font-size: 18px;
+    }
 }
