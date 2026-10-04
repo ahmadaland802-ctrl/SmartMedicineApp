@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ku" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0,
                    maximum-scale=1.0, user-scalable=no">
 
-    <title>Smart Medicine Box</title>
+    <title>سندوقی دەرمانی زیرەک</title>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
@@ -14,87 +16,246 @@
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 
+
 <body>
 
 <div class="app">
 
-    <!-- Header -->
+    <!-- ============================= -->
+    <!-- HEADER -->
+    <!-- ============================= -->
+
     <header>
+
         <div>
-            <h1>💊 Smart Medicine Box</h1>
-            <p id="welcome">Medicine Reminder</p>
+
+            <h1>💊 سندوقی دەرمانی زیرەک</h1>
+
+            <p id="welcome">
+                یادخستنەوەی دەرمان
+            </p>
+
         </div>
+
     </header>
 
-    <!-- Home Page -->
+
+    <!-- ============================= -->
+    <!-- HOME PAGE -->
+    <!-- ============================= -->
+
     <main id="homePage">
 
+
         <div class="section-title">
-            <h2>My Medicine Boxes</h2>
-            <button class="refresh-btn" onclick="loadMedicines()">↻</button>
+
+            <h2>
+                سندوقە دەرمانییەکانم
+            </h2>
+
+            <button
+                class="refresh-btn"
+                onclick="loadMedicines()">
+
+                ↻
+
+            </button>
+
         </div>
 
+
+        <!-- Medicine boxes -->
+
         <div id="boxesContainer"></div>
+
+
+        <!-- ============================= -->
+        <!-- ALARM CONTROL -->
+        <!-- ============================= -->
+
+        <div class="control-card">
+
+            <h2>
+                🔔 کۆنترۆڵی ئاگادارکردنەوە
+            </h2>
+
+            <p>
+                ئەگەر دەرمانەکە دەنگ و ڕۆشنایی هەیە،
+                دەتوانیت لە دوورەوە بیوەستێنیت.
+            </p>
+
+            <button
+                class="stop-alarm-btn"
+                onclick="stopAlarm()">
+
+                🔕 وەستاندنی ئاگادارکردنەوە
+
+            </button>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- KURDISH VOICE -->
+        <!-- ============================= -->
+
+        <div class="voice-card">
+
+            <h2>
+                🔊 دەنگی کوردی
+            </h2>
+
+            <p>
+                ئەو دەقەی خوارەوە پاشەکەوت دەکرێت و
+                هەر کاتێک بتەوێت دەتوانیت دەستکاری بکەیت.
+            </p>
+
+
+            <label for="voiceText">
+
+                دەقی دەنگی کوردی
+
+            </label>
+
+
+            <textarea
+                id="voiceText"
+                rows="4"
+                placeholder="دەقی دەنگی کوردی بنووسە...">
+            </textarea>
+
+
+            <div class="voice-buttons">
+
+                <button
+                    class="save-voice-btn"
+                    onclick="saveVoiceText()">
+
+                    💾 پاشەکەوتکردنی دەق
+
+                </button>
+
+
+                <button
+                    class="send-voice-btn"
+                    onclick="sendVoice()">
+
+                    🔊 ناردنی دەنگ
+
+                </button>
+
+            </div>
+
+        </div>
 
     </main>
 
 
-    <!-- Edit Page -->
+    <!-- ============================= -->
+    <!-- EDIT MEDICINE PAGE -->
+    <!-- ============================= -->
+
     <main id="editPage" class="hidden">
 
-        <button class="back-btn" onclick="showHome()">
-            ← Back
+
+        <button
+            class="back-btn"
+            onclick="showHome()">
+
+            → گەڕانەوە
+
         </button>
 
+
         <div class="edit-header">
-            <h2 id="editTitle">Box 1</h2>
-            <p>Medicine information</p>
+
+            <h2 id="editTitle">
+                سندوقی دەرمان
+            </h2>
+
+            <p>
+                زانیاری دەرمان
+            </p>
+
         </div>
+
+
+        <!-- Medicine name -->
 
         <div class="card">
 
-            <label>Medicine name</label>
+            <label for="medicineName">
+
+                ناوی دەرمان
+
+            </label>
+
 
             <input
                 type="text"
                 id="medicineName"
-                placeholder="Enter medicine name"
-            >
+                placeholder="ناوی دەرمان بنووسە">
 
         </div>
 
 
+        <!-- Reminder times -->
+
         <div class="card">
 
+
             <div class="times-header">
+
                 <div>
-                    <h3>Reminder times</h3>
-                    <p>Up to 4 reminders</p>
+
+                    <h3>
+                        کاتەکانی یادخستنەوە
+                    </h3>
+
+                    <p>
+                        تا ٤ کاتی یادخستنەوە
+                    </p>
+
                 </div>
+
 
                 <button
                     class="add-btn"
                     onclick="addTime()">
-                    + Add
+
+                    + زیادکردن
+
                 </button>
+
             </div>
 
+
             <div id="timesContainer"></div>
+
 
         </div>
 
 
+        <!-- Save medicine -->
+
         <button
             class="save-main-btn"
             onclick="saveMedicine()">
-            💾 Save Changes
+
+            💾 پاشەکەوتکردن
+
         </button>
+
 
     </main>
 
 
-    <!-- Status -->
+    <!-- ============================= -->
+    <!-- MESSAGE -->
+    <!-- ============================= -->
+
     <div id="message"></div>
+
 
 </div>
 
@@ -102,4 +263,5 @@
 <script src="{{ url_for('static', filename='app.js') }}"></script>
 
 </body>
+
 </html>
